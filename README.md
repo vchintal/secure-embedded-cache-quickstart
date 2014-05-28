@@ -9,7 +9,7 @@ Prerequisites
 -------------
 1. JDK 1.6+
 2. Maven 3.0
-3. JBoss EAP or JBoss AS 7
+3. JBoss EAP 6.2+ or JBoss AS 7
 
 Setup
 -----
