@@ -21,13 +21,13 @@ Setup
 4. To deploy the packaged webapp, run the command `mvn jboss-as:deploy`
 5. Since we will be using __application-user.properties__ and __application-roles.properties__ files that come with a standard JBoss server installation at path: __$JBOSS_HOME/standalone/configuration__, run the following commands from the `bin` folder of the server installation
         
-       ```sh       
-	   # Add a user who will be a reader. A reader can only read from the cache and cannot perform cache modifications
-		./add-user.sh -a -u readerUser -p readerUserPass9! -r ApplicationRealm -g reader
-	   # Add a user who will be an admin. An admin can perform ALL possible operations on the cache
-		./add-user.sh -a -u adminUser -p adminUserPass9! -r ApplicationRealm -g admin
-       ```
-		
+   ```sh       
+   # Add a user who will be a reader. A reader can only read from the cache and cannot perform cache modifications
+   ./add-user.sh -a -u readerUser -p readerUserPass9! -r ApplicationRealm -g reader
+   
+   # Add a user who will be an admin. An admin can perform ALL possible operations on the cache
+   ./add-user.sh -a -u adminUser -p adminUserPass9! -r ApplicationRealm -g admin
+   ```		
 6. Restart the application server to ensure that additions to the files containing the users/roles will be picked up
 7. Considering a very basic setup of the server, the application should now be accessible at the URL: http://127.0.0.1:8080/secure-embedded-cache-quickstart/
 
