@@ -40,14 +40,13 @@ public class CacheRestService {
 	@Path("/get")
 	@Produces("application/json")
 	public CacheOperationResult<CacheEntry<String,String>> get(final @QueryParam("key") String key) {
-		final Cache<String, String> cache;
 		final CacheOperationResult<CacheEntry<String,String>> cor = new CacheOperationResult<CacheEntry<String,String>>();
 		Subject subject = SecurityContextAssociation.getSubject();
-		try {
-			cache = cm.getCache("secured");
+		try {		
 			Subject.doAs(subject, new PrivilegedAction<Void>() {
-				@Override
 				public Void run() {	
+	                Cache<String, String> cache;
+	                cache = cm.getCache("secured");
 					ArrayList<CacheEntry<String, String>> cacheEntries = new ArrayList<CacheEntry<String, String>>();
 					/* 
 					 * If key is provided, extract the value associated with the key in the
@@ -84,14 +83,15 @@ public class CacheRestService {
 	@Produces("application/json")
 	public CacheOperationResult<String> put(final @QueryParam("key") String key, 
 			final @QueryParam("value") String value) {
-		final Cache<String, String> cache;
+
 		final CacheOperationResult<String> cor = new CacheOperationResult<String>();
 		Subject subject = SecurityContextAssociation.getSubject();
 		try {
-			cache = cm.getCache("secured");
 			String returnValue = Subject.doAs(subject, new PrivilegedAction<String>() {
 				@Override
 				public String run() {	
+				    Cache<String, String> cache;
+				    cache = cm.getCache("secured");
 					return cache.putIfAbsent(key, value);
 				}
 			});	
@@ -143,14 +143,14 @@ public class CacheRestService {
 	@Produces("application/json")
 	public CacheOperationResult<Boolean> remove(final @QueryParam("key") String key,
 			final @QueryParam("value") String value) {
-		final Cache<String, String> cache;
 		final CacheOperationResult<Boolean> cor = new CacheOperationResult<Boolean>();
 		Subject subject = SecurityContextAssociation.getSubject();
 		try {		
-			cache = cm.getCache("secured");
 			Boolean returnValue = Subject.doAs(subject, new PrivilegedAction<Boolean>() {
 				@Override
 				public Boolean run() {	
+                    Cache<String, String> cache;
+                    cache = cm.getCache("secured");
 					return cache.remove(key, value);
 				}
 			});
