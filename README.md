@@ -2,14 +2,16 @@ Security in Embedded Cache
 ========================
 
 This web application demonstrates how security works in upcoming Infinispan version, in embedded mode. Please give the following links a good reading to understand further how security in Infinispan works:
+
 * https://github.com/infinispan/infinispan/wiki/Security
 * http://blog.infinispan.org/2014/04/infinispan-security-1-authorization.html
+* [Official Documentation](https://access.redhat.com/documentation/en-us/red_hat_jboss_data_grid/7.1/html-single/administration_and_configuration_guide/#securing_data_in_red_hat_jboss_data_grid)
 
 Prerequisites
 -------------
-1. JDK 1.6+
-2. Maven 3.0
-3. JBoss EAP 6.2+ or JBoss AS 7
+1. JDK 1.8+
+2. Maven 3.5
+3. JBoss EAP 7.x
 
 Setup
 -----
@@ -17,15 +19,15 @@ Setup
 2. To build and package the webapp, run the command `mvn clean package` at the command prompt in the root directory of the project
 3. To deploy the __security-domain__ that will be used for Authentication, run the command `mvn jboss-as:execute-commands`
 4. To deploy the packaged webapp, run the command `mvn jboss-as:deploy`
-5. Since we will be using __application-user.properties__ and __application-roles.properties__ files that come with a standard JBoss server installation at path: __$JBOSS_HOME/standalone/configuration__, run the following commands from the bin folder of the server installation
+5. Since we will be using __application-user.properties__ and __application-roles.properties__ files that come with a standard JBoss server installation at path: __$JBOSS_HOME/standalone/configuration__, run the following commands from the `bin` folder of the server installation
+        
+       ```sh       
+	   # Add a user who will be a reader. A reader can only read from the cache and cannot perform cache modifications
+		./add-user.sh -a -u readerUser -p readerUserPass9! -r ApplicationRealm -g reader
+	   # Add a user who will be an admin. An admin can perform ALL possible operations on the cache
+		./add-user.sh -a -u adminUser -p adminUserPass9! -r ApplicationRealm -g admin
+       ```
 		
-		# Add a user who will be a reader. A reader can only read from the cache and cannot 
-		# perform any operation that changes the state of the cache or its contents
-		$JBOSS_HOME/bin> ./add-user.sh -a -u readerUser -p readerUserPass9! -r ApplicationRealm -g reader
-		
-		# Add a user who will be an admin. An admin can perform ALL possible operations on 
-		# the cache
-		$JBOSS_HOME/bin> ./add-user.sh -a -u adminUser -p adminUserPass9! -r ApplicationRealm -g admin
 6. Restart the application server to ensure that additions to the files containing the users/roles will be picked up
 7. Considering a very basic setup of the server, the application should now be accessible at the URL: http://127.0.0.1:8080/secure-embedded-cache-quickstart/
 

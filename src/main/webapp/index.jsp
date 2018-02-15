@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cache Contents and Operations</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cache Contents and Operations</title>
 
-    <link rel="stylesheet" media="all" href="css/bootstrap-2.3.2.min.css" />
-    <link rel="stylesheet" media="all" href="css/application.css" />
+<link rel="stylesheet" media="all" href="css/bootstrap-2.3.2.min.css" />
+<link rel="stylesheet" media="all" href="css/application.css" />
 
-	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	
-	<script type="text/javascript">
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
 
 		$(document).ready(function() {
 		  $(window).keydown(function(event){
@@ -110,38 +111,42 @@
 			fetchCacheEntries();
 		});
 	</script>
-	
-    <style type="text/css">
 
-      body {
-        background-color: #eee;
-      }
-	  
-    </style>
+<style type="text/css">
+body {
+	background-color: #eee;
+}
+</style>
 
-  </head>
-  <body>
-    <div class="container" style="width:700px">
-        <h2>Secured Embedded Cache Contents and Operations</h2>
-        <div style="-moz-border-radius: 15px;background-color: #E6E6E6;border-radius: 15px;margin:10px 0px 10px 0px;padding: 10px;text-align: center">
-          <label id="loggedUser" style="font-weight: bold"></label>
-          <label for="key">Provide the ( KEY , VALUE ) pair to be added to Cache</label>
-          <input class="form-control" id="key" placeholder="Key" autocomplete="on" type="text">
-          <input class="form-control" id="value" placeholder="Value" autocomplete="on" type="text">
-		  <br/>
-		  <button class="btn btn-lg btn-primary" style="width:445px" onclick="add()">Add</button>
-        </div>
-        <h3>Cache Contents</h3>
-		<table id="cacheTable" style="width:100%" class="table-bordered table-collapsed">
+</head>
+<body>
+	<div class="container" style="width: 700px">
+		<h2>Secured Embedded Cache Contents and Operations</h2>
+		<div
+			style="-moz-border-radius: 15px; background-color: #E6E6E6; border-radius: 15px; margin: 10px 0px 10px 0px; padding: 10px; text-align: center">
+			<label id="loggedUser" style="font-weight: bold"></label> <label
+				for="key">Provide the ( KEY , VALUE ) pair to be added to
+				Cache</label> <input class="form-control" id="key" placeholder="Key"
+				autocomplete="on" type="text"> <input class="form-control"
+				id="value" placeholder="Value" autocomplete="on" type="text">
+			<br />
+			<button class="btn btn-lg btn-primary" style="width: 445px"
+				onclick="add()">Add</button>
+		</div>
+		<h3>Cache Contents</h3>
+		<table id="cacheTable" style="width: 100%"
+			class="table-bordered table-collapsed">
 			<thead>
-			<tr>
-				<th style="width:48%">Key</th>
-				<th style="width:48%">Value</th>
-				<th style="width:4%">Delete?</th>
-			</tr>
+				<tr>
+					<th style="width: 48%">Key</th>
+					<th style="width: 48%">Value</th>
+					<th style="width: 4%">Delete?</th>
+				</tr>
 			</thead>
 			<tbody>
 			</tbody>
 		</table>
-    </div> <!-- /container -->
-</body></html>
+	</div>
+	<!-- /container -->
+</body>
+</html>
